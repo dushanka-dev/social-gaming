@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'gamingzone',
+    'landing',
+    'socialhub',
 ]
 
 MIDDLEWARE = [
