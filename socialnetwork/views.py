@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def hello_social(request):
+    # return HttpResponse('Hello Social Page')
+    return render(request, 'userprofile.html')
