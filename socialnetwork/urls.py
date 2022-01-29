@@ -3,5 +3,5 @@ from . import views
 
 # URL Conf
 urlpatterns = [
-    path('profile/', views.home),
+    path('profile/', views.usersprofile),
 ]
