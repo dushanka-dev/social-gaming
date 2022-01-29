@@ -2,3 +2,19 @@ body {
     background-color: rgb(37, 37, 37);
     color: rgb(255, 255, 255);
 }
+
+#landing {
+    background-color: rgb(94, 71, 55);
+}
+
+.landing-area {
+    min-height: 80vh;
+}
+
+.landing-text {
+    background-color: rgb(108, 108, 165);
+}
+
+.signup-form {
+    background-color: rgb(158, 168, 148);
+}
