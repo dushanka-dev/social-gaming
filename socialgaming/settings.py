@@ -85,6 +85,14 @@ TEMPLATES = [
     },
 ]
 
+# For TESTING ONLY
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
+
 WSGI_APPLICATION = 'socialgaming.wsgi.application'
 
 
