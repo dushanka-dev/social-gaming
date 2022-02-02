@@ -18,3 +18,18 @@ body {
 .signup-form {
     background-color: rgb(158, 168, 148);
 }
+
+/* AllAuth  */
+
+.signup-container, .login-container, .password-reset-container {
+    background-color: rgb(42, 165, 63);
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    padding: 50px 20px;
+    border-radius: 20px;
+}
+
+#signup-form, #login-form, #password-reset-form {
+    background-color: rgb(31, 59, 182);
+}
