@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'accounts',
     'socialnetwork',
+    'useraccounts',
 ]
 
 SITE_ID = 1
