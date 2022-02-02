@@ -3,6 +3,12 @@ body {
     color: rgb(255, 255, 255);
 }
 
+/* Navbar */
+
+.navbar {
+    background-color: blue;
+}
+
 #landing {
     background-color: rgb(94, 71, 55);
 }
