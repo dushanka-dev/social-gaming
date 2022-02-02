@@ -14,8 +14,8 @@
       <h1>Your Gaming Social Network</h1>
       <p>Interact with other gamers. One place where you can meet like minded gamers to hangout with... Online Of Course</p>
       <div>
-        <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg">Login</button>
+        <a class="btn btn-primary btn-lg" href="{% url 'account_signup' %}" role="button">Sign Up</a>
+        <a class="btn btn btn-info btn-lg" href="{% url 'account_login' %}" role="button">Login</a>
       </div>
     </div>
   </div>
