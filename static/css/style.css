@@ -21,7 +21,7 @@ body {
 
 /* AllAuth  */
 
-.signup-container {
+.signup-container, .login-container, .password-reset-container {
     background-color: rgb(42, 165, 63);
     justify-content: center;
     text-align: center;
@@ -30,6 +30,6 @@ body {
     border-radius: 20px;
 }
 
-#signup_form {
+#signup-form, #login-form, #password-reset-form {
     background-color: rgb(31, 59, 182);
 }
