@@ -7,7 +7,17 @@ My Profile
 {% block content %}
     <h2>User Profile Page</h2>
 
-    <div class="text-white bg-dark" style="width: 280px;">
+{% if user.is_authenticated %}
+
+<p>User: {{ user }}</p>
+
+{% else %}
+
+<p>Please login</p>
+
+{% endif %}
+ 
+    <!-- <div class="text-white bg-dark" style="width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
           <span class="fs-4">My Profile</span>
@@ -44,5 +54,5 @@ My Profile
             <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
         </div>
-      </div>
+      </div> -->
 {% endblock %}
