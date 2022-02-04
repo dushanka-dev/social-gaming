@@ -10,11 +10,8 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=500)
     country = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True, blank=True)
-
-class UserPicture(models.Model):
-    """Upload User Profile picture to profile"""
     user_picture = models.ImageField(default='default-pic.png', upload_to='uploads/')
 
-class Friends(models.Model):
+class Friend(models.Model):
     """Upload User Profile picture to profile"""
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
