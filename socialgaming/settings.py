@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'socialnetwork',
     'useraccounts',
+    'profiles',
 ]
 
 SITE_ID = 1
