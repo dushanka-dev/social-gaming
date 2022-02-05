@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     country = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True, blank=True)
     # user_picture = CloudinaryField(default='uploads/default-image.png')
-    user_picture = models.ImageField(default='default-image.png', upload_to='media/uploads/')
+    user_picture = models.ImageField(default='media/uploads/default.png', upload_to='uploads/', null=True, blank=True)
     # updated = models.DateTimeField(auto_now=True)
     # created = models.DateTimeField(auto_now_add=True)
 
