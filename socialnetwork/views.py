@@ -7,6 +7,3 @@ from django.http import HttpResponse
 
 def home(response):
     return render(response, 'landing.html', {})
-
-def usersprofile(response):
-    return render(response, 'userprofile.html', {})
