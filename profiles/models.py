@@ -16,17 +16,31 @@ class UserProfile(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     # user_picture = CloudinaryField(default='uploads/default-image.png')
     user_picture = models.ImageField(default='uploads/default.png', upload_to='uploads/', blank=True)
-    # updated = models.DateTimeField(auto_now=True)
+    friends = models.ManyToManyField(User, blank=True, related_name='friends')
+    updated = models.DateTimeField(auto_now=True)
     profile_created = models.DateField(default=timezone.now)
 
     def __str__(self):
         return f'{self.user}-{self.profile_created}'
-    
+
     def save(self, *args, **kwargs):
-        
+
         self.slug = slugify(self.user)
         super().save(*args, **kwargs)
 
+STATUS_CHOICES = (
+    ('send', 'send'),
+    ('accepted', 'accepted')
+)
+
 class Friend(models.Model):
     """Upload User Profile picture to profile"""
-    friends = models.ManyToManyField(User, blank=True, related_name='friends')
+
+    friend_sender = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='friend_sender', default=None)
+    friend_receiver = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='friend_receiver', default=None)
+    friend_status = models.CharField(max_length=8, choices=STATUS_CHOICES, default=None)
+    friend_created = models.DateField(default=timezone.now)
+    friend_updated = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.friend_sender}-{self.friend_receiver}-{self.friend_status}'
