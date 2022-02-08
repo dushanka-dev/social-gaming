@@ -6,8 +6,8 @@ from .models import UserProfile
 def user_profile(request):
     """User profile views with objects"""
 
-    user_obj = UserProfile.objects.get(user=request.user)
+    users_profile = UserProfile.objects.get(user=request.user)
     context = {
-        'user_obj': user_obj,
+        'users_profile': users_profile,
     }
     return render(request, 'profiles/userprofile.html', context)
