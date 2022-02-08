@@ -6,9 +6,9 @@ My Profile
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid" id="profile-container">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3 profile-sidebar">
             <div class="text-white bg-dark" style="width: 280px;">
                 <a href="/" class="text-white text-decoration-none">
                   <span class="fs-4">Hello, {{ user }}</span>
@@ -47,11 +47,17 @@ My Profile
                 </div>
               </div>
             </div>
-            <div class="col-lg-8">
                 {% if user.is_authenticated %}
-    
-                <p>User: {{ user }}</p>
-                <p>Email: {{ user.email }}</p>
+            <div class="col-lg-4">
+
+                <img src="{{users_profile.user_picture.url}}" class="profile-pic" alt="">
+              </div>
+            <div class="col-lg-5">
+                <p>User: {{ users_profile.user }}</p>
+                <p>First Name: {{ users_profile.first_name }}</p>
+                <p>Last Name: {{ users_profile.last_name }}</p>
+                <p>Email: {{ users_profile.email }}</p>
+                <p>Bio: {{ users_profile.bio }}</p>
                 
                 {% else %}
                 
