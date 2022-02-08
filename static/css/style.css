@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Wire+One&display=swap');
 
+
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
@@ -55,6 +60,23 @@ body {
 
 .signup-form {
     background-color: rgb(158, 168, 148);
+}
+
+/* Profiles */
+
+#profile-container {
+    background-color: red;
+    /* margin: 40px 20px; */
+}
+
+.profile-sidebar {
+    background-color: #FF7524;
+}
+
+.profile-pic {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
 }
 
 /* AllAuth  */
