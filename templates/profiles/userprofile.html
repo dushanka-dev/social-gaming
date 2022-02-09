@@ -57,6 +57,12 @@ My Profile
       <img src="{{users_profile.user_picture.url}}" class="profile-pic" alt="">
     </div>
     <div class="col-lg-6">
+
+      {% if form_update %}
+      <div>
+        <h6>Profile Update successfully!</h6>
+      </div>
+      {% endif %}
       <form method="POST" action="" class="" enctype=multipart/form-data>
         {% csrf_token %}
 
