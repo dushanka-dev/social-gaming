@@ -79,6 +79,15 @@ body {
     border-radius: 50%;
 }
 
+.form-valid {
+    background-color: green;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
 /* AllAuth  */
 
 .signup-container, .login-container, .password-reset-container {
