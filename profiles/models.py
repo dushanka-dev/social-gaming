@@ -12,6 +12,7 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(max_length=200, blank=True)
     bio = models.TextField(max_length=500, blank=True)
+    favourite_game = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True, blank=True)
     # user_picture = CloudinaryField(default='uploads/default-image.png')
