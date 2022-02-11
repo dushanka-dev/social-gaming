@@ -88,6 +88,16 @@ body {
     margin: 10px 0;
 }
 
+.profile-table {
+    width: 50%;
+}
+
+/* Profile Modal */
+
+#staticBackdrop {
+    color: #000;
+}
+
 /* AllAuth  */
 
 .signup-container, .login-container, .password-reset-container {
