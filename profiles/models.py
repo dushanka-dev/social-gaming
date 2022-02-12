@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.template.defaultfilters import slugify
-# from django.urls import reverse
+from django.utils.text import slugify
 # from cloudinary.models import CloudinaryField
 
 class UserProfile(models.Model):
@@ -14,7 +13,7 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     favourite_game = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=200, blank=True)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(unique=True, null=True)
     # user_picture = CloudinaryField(default='uploads/default-image.png')
     user_picture = models.ImageField(default='uploads/default.png', upload_to='uploads/', blank=True)
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
@@ -25,7 +24,6 @@ class UserProfile(models.Model):
         return f'{self.user}-{self.profile_created}'
 
     def save(self, *args, **kwargs):
-
         self.slug = slugify(self.user)
         super().save(*args, **kwargs)
 
