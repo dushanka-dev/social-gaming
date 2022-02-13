@@ -76,27 +76,25 @@ My Profile
             <td class="">Username: {{ user }}</td>
           </tr>
           <tr class="">
-            <td class="">First Name: {{ users_profile.first_name }}</td>
+            <td class="">First Name: {{ user.userprofile.first_name }}</td>
           </tr>
           <tr class="">
-            <td class="">Last Name: {{ users_profile.last_name }}</td>
+            <td class="">Last Name: {{ user.userprofile.last_name }}</td>
           </tr>
           <tr class="">
-            <td class="">Email: {{ users_profile.email }}</td>
+            <td class="">Email: {{ user.userprofile.email }}</td>
           </tr>
           <tr class="">
-            <td class="">Bio: {{ users_profile.bio }}</td>
+            <td class="">Bio: {{ user.userprofile.bio }}</td>
           </tr>
           <tr class="">
-            <td class="">Favourite Game: {{ users_profile.favourite_game }}</td>
+            <td class="">Favourite Game: {{ user.userprofile.favourite_game }}</td>
           </tr>
           <tr class="">
-            <td class="">Country: {{ users_profile.country }}</td>
+            <td class="">Country: {{ user.userprofile.country }}</td>
           </tr>
-
         </tbody>
       </table>
-
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Update Profile
@@ -116,7 +114,7 @@ My Profile
               <form method="POST" action="" class="" enctype=multipart/form-data>
                 {% csrf_token %}
 
-                {{ profile_form | crispy}}
+                {{ form.as_p | crispy}}
 
                 <!-- <button type="submit" class="btn btn-primary"> Update</button> -->
             </div>
@@ -140,6 +138,5 @@ My Profile
   </div>
 
 </div>
-
 
 {% endblock %}
