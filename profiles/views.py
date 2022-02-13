@@ -10,13 +10,13 @@ class ProfileView(ListView):
     """List User Profile Model objects to display in template"""
 
     model = UserProfile
+    # fields = ['first_name', 'last_name', 'email', 'bio', 'favourite_game']
     # form_class = ProfileForm
     # initial = {'key': 'value'}
     template_name = 'profiles/userprofile.html'
 
-    
-    # def get_queryset(self, *args, **kwargs):
-    #     return UserProfile.objects.filter(tags__slug=self.kwargs['slug'])
+    def get_queryset(self):
+        return UserProfile.objects.all()
 
 
     # def user_profile(self, request):
