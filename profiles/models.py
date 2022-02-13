@@ -25,7 +25,7 @@ class UserProfile(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user)
-        super().save(*args, **kwargs)
+        super(UserProfile, self).save(*args, **kwargs)
 
 STATUS_CHOICES = (
     ('send', 'send'),

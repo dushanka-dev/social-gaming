@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import ProfileView
 
 # URL Conf
 urlpatterns = [
-    path('profile/', views.user_profile, name='profile'),
+    path('', ProfileView.as_view(), name='profile'),
+    # path('<slug:slug>/', UpdateProfile.as_view(), name='profile'),
 ]
