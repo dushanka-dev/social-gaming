@@ -1,81 +1,26 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView
 # from django.views.generic.edit import UpdateView
 from .models import UserProfile
 from .forms import ProfileForm
 
 # Create your views here.
 
-class ProfileView(ListView):
-    """List User Profile Model objects to display in template"""
-
+class UpdateProfile(UpdateView):
+    """Update Profile Model objects to display in template and POST data back to db"""
     model = UserProfile
-    # fields = ['first_name', 'last_name', 'email', 'bio', 'favourite_game']
     # form_class = ProfileForm
-    # initial = {'key': 'value'}
+    fields = ['first_name', 'last_name', 'email', 'bio', 'favourite_game']
     template_name = 'profiles/userprofile.html'
+    success_url = 'profile'
 
-    def get_queryset(self):
-        return UserProfile.objects.all()
+    def get_object(self, queryset=None):
+        obj = obj = get_object_or_404(UserProfile, user=self.request.user)
+        return obj
 
+    def get_success_url(self):
+        return reverse('profile')
 
-    # def user_profile(self, request):
-    #     """User profile views with objects"""
-
-    #     def get(self, request, *args, **kwargs):
-    #         form = self.form_class(initial=self.initial)
-    #         return render(request, self.template_name, {'form': form})
-
-    #     def post(self, request, *args, **kwargs):
-    #         form = self.form_class(request.POST)
-    #         if form.is_valid():
-    #             # <process form cleaned data>
-    #             form_class.save()
-
-    #         return render(request, self.template_name, {'form': form})
-
-# class UpdateProfile(UpdateView):
-#     """List User Profile Model objects to display in template"""
-
-#     model = UserProfile
-#     form_class = ProfileForm
-#     template_name = 'profiles/userprofile.html'
-
-#     def get(self, request, *args, **kwargs):
-#             """User profile views with objects"""
-#             form = self.form_class(initial=self.initial)
-#             return render(request, self.template_name, {'form': form})
-
-#     def post(self, request, *args, **kwargs):
-#         form = self.form_class(request.POST)
-#         if form.is_valid():
-#             # <process form cleaned data>
-#             form_class.save()
-
-#         return render(request, self.template_name, {'form': form})
-
-# def user_profile(request):
-#     """User profile views with objects"""
-
-#     users_profile = UserProfile.objects.get(user=request.user)
-#     profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=users_profile)
-#     form_update = False
-#     image_update = False
-
-#     if request.method == 'POST' and profile_form.is_valid():
-#         profile_form.save()
-#         form_update = True
-
-#     if request.FILES:
-#         profile_form.save()
-#         form_update = False
-#         image_update = True
-#         print("Image done!")
-
-#     context = {
-#         'users_profile': users_profile,
-#         'profile_form': profile_form,
-#         'form_update': form_update,
-#         'image_update': image_update,
-#     }
-#     return render(request, 'profiles/userprofile.html', context)
