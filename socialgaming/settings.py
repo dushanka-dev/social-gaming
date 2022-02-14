@@ -57,7 +57,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 # Redirect URL
-LOGIN_REDIRECT_URL = '/profiles/'
+LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # Media
