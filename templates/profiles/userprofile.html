@@ -76,7 +76,7 @@ My Profile
             <td class="">Username: {{ user }}</td>
           </tr>
           <tr class="">
-            <td class="">First Name: {{ user.userprofile.first_name }}</td>
+            <td class="">First Name: {{ user.first_name }}</td>
           </tr>
           <tr class="">
             <td class="">Last Name: {{ user.userprofile.last_name }}</td>
@@ -114,7 +114,7 @@ My Profile
               <form method="POST" action="" class="" enctype=multipart/form-data>
                 {% csrf_token %}
 
-                {{ form.as_p | crispy}}
+                {{ form | crispy}}
 
                 <!-- <button type="submit" class="btn btn-primary"> Update</button> -->
             </div>
