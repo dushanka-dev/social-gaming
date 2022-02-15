@@ -35,40 +35,24 @@ My Profile
           </li>
         </ul>
         <hr>
-        <div class="dropdown">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>{{ user }}</strong>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <img src="{{userprofile.user_picture.url}}" class="profile-pic" alt="">
+    </div>
+    <div class="col-lg-4">
+
+    <!-- Form update success message -->
+    {% if messages%}
+      {% for message in messages %}
+        <div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+          {{ message }}
         </div>
-      </div>
-    </div>
+      {% endfor %}
+    {% endif %}
 
-    <div class="col-lg-4">
-      <img src="{{users_profile.user_picture.url}}" class="profile-pic" alt="">
-    </div>
-    <div class="col-lg-4">
-
-      {% if form_update %}
-      <div class="form-valid">
-        <h6>Profile Update successfully!</h6>
-      </div>
-      {% endif %}
-      {% if image_update %}
-      <div class="form-valid">
-        <h6>Image Update successfully!</h6>
-      </div>
-      {% endif %}
+    <!-- User Profile edit section -->
 
       <table class="table profile-table table-dark table-striped">
         <tbody>
@@ -76,7 +60,7 @@ My Profile
             <td class="">Username: {{ user }}</td>
           </tr>
           <tr class="">
-            <td class="">First Name: {{ user.first_name }}</td>
+            <td class="">First Name: {{ user.userprofile.first_name }}</td>
           </tr>
           <tr class="">
             <td class="">Last Name: {{ user.userprofile.last_name }}</td>
@@ -95,11 +79,11 @@ My Profile
           </tr>
         </tbody>
       </table>
+
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Update Profile
       </button>
-
 
       <!-- Modal -->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
