@@ -39,51 +39,41 @@ My Profile
     </div>
 
     <div class="col-lg-4">
-      <img src="{{userprofile.user_picture.url}}" class="profile-pic" alt="">
-    </div>
-    <div class="col-lg-4">
 
-    <!-- Form update success message -->
-    {% if messages %}
+      <!-- Form update success message -->
+      {% if messages %}
       {% for message in messages %}
-        <div class="text-center alert alert-primary {{ message.tags }}" role="alert">
-          {{ message }}
-        </div>
+      <div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+        {{ message }}
+      </div>
       {% endfor %}
-    {% endif %}
+      {% endif %}
 
-    <!-- User Profile edit section -->
+      <!-- User Profile edit section -->
 
-      <table class="table profile-table table-dark table-striped">
-        <tbody>
-          <tr class="">
-            <td class="">Username: {{ user }}</td>
-          </tr>
-          <tr class="">
-            <td class="">First Name: {{ user.userprofile.first_name }}</td>
-          </tr>
-          <tr class="">
-            <td class="">Last Name: {{ user.userprofile.last_name }}</td>
-          </tr>
-          <tr class="">
-            <td class="">Email: {{ user.userprofile.email }}</td>
-          </tr>
-          <tr class="">
-            <td class="">Bio: {{ user.userprofile.bio }}</td>
-          </tr>
-          <tr class="">
-            <td class="">Favourite Game: {{ user.userprofile.favourite_game }}</td>
-          </tr>
-          <tr class="">
-            <td class="">Country: {{ user.userprofile.country }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="card profile-detail-card">
+        <img src="{{userprofile.user_picture.url}}" class="card-img-top" alt="">
+        <div class="card-body profile-card-content">
+          <h5 class="card-title">My Details</h5>
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Update Profile
-      </button>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username: {{ user }}</li>
+            <li class="list-group-item">First Name: {{ user.userprofile.first_name }} </li>
+            <li class="list-group-item">Last Name: {{ user.userprofile.last_name }} </li>
+            <li class="list-group-item">Email: {{ user.userprofile.email }} </li>
+            <li class="list-group-item">Bio: {{ user.userprofile.bio }} </li>
+            <li class="list-group-item">Favourite Game: {{ user.userprofile.favourite_game }} </li>
+            <li class="list-group-item">Country: {{ user.userprofile.country }} </li>
+          </ul>
+
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Update Profile
+        </button>
+
+      </div>
 
       <!-- Modal -->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -100,7 +90,6 @@ My Profile
 
                 {{ form | crispy}}
 
-                <!-- <button type="submit" class="btn btn-primary"> Update</button> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -110,6 +99,10 @@ My Profile
           </div>
         </div>
       </div>
+
+    </div>
+    <div class="col-lg-4">
+
 
       {% else %}
 
