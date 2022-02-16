@@ -6,4 +6,7 @@ from django.http import HttpResponse
 #     return render(response, 'base.html', {})
 
 def home(response):
-    return render(response, 'landing.html', {})
+    return render(response, 'socialnetwork/landing.html', {})
+
+def post(response):
+    return render(response, 'socialnetwork/posts.html', {})
