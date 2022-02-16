@@ -62,18 +62,43 @@ body {
     background-color: rgb(158, 168, 148);
 }
 
-/* Profiles */
+/* Profiles section */
 
 #profile-container {
-    background-color: rgb(145, 135, 135);
-    /* margin: 40px 20px; */
+    margin: 40px 0;
 }
 
 .profile-sidebar {
-    background-color: #FF7524;
+    background-color: #4b4542;
+    padding: 30px 5px;
+    border-radius: 5%;
 }
 
-.profile-pic {
+/* Profile details section */
+
+.profile-detail-card img {
+    max-width: 70%;
+    height: 60%;
+    border-radius: 50%;
+}
+
+.profile-detail-card {
+    background-color: #252322;
+    width: 80%;
+    /* padding: 20px; */
+    margin: 0 10px;
+    align-items: center;
+}
+
+.profile-card-content {
+    width: 80%;
+}
+
+.profile-card-content ul li {
+    color: #fff;
+    background-color: #7a7673;
+}
+/* .profile-pic {
     width: 70%;
     height: 70%;
     border-radius: 50%;
@@ -86,11 +111,7 @@ body {
     text-align: center;
     padding: 10px 0;
     margin: 10px 0;
-}
-
-.profile-table {
-    width: 50%;
-}
+} */
 
 /* Profile Modal */
 
