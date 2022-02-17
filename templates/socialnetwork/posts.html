@@ -6,8 +6,6 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-
 <div class="col-lg-3 profile-sidebar">
   {% block sidebar %}
 <nav>
@@ -17,5 +15,4 @@
   
 </div>
 
- {% endif %}
 {% endblock %}
