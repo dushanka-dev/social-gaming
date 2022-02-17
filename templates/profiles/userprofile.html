@@ -58,8 +58,6 @@ My Profile
 
       </div>
 
-
-
       <!-- Modal -->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -84,21 +82,35 @@ My Profile
           </div>
         </div>
       </div>
-
     </div>
-    <div class="col-lg-4">
 
-
-      {% else %}
-
-      <p>Please login</p>
-
-      {% endif %}
-
+    <!-- User Post Feed -->
+    <div class="col-lg-3 user-post-feed">
+      <h3>My Post Feed</h3>
+      <div class="row">
+        {% for post in object_list %}
+        <div class="card text-white bg-dark user-posts" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">{{ post.author }}</h4>
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body }}</p>
+            <p class="card-text"> Created: {{ post.created_time }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
 
   </div>
 
 </div>
+
+{% else %}
+
+      <p>Please login</p>
+
+      {% endif %}
 
 {% endblock %}
