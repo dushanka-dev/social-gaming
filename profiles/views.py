@@ -20,8 +20,8 @@ class UpdateProfile(UpdateView):
     success_message = 'Your Profile Updated Successfully!'
 
     def get_object(self, queryset=None):
-        obj = obj = get_object_or_404(UserProfile, user=self.request.user)
-        return obj
+        user_obj = get_object_or_404(UserProfile, user=self.request.user)
+        return user_obj
 
     def form_valid(self, form):
         messages.success(self.request, 'Your Profile Updated Successfully!')
