@@ -19,4 +19,4 @@ def home(response):
 class UserPostsView(ListView):
     """Display users posts"""
     model = Post
-    template_name = 'socialnetwork/posts.html'
+    template_name = 'socialnetwork/my-posts.html'
