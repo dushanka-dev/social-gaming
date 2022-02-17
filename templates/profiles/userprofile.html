@@ -9,6 +9,15 @@ My Profile
 
 {% if user.is_authenticated %}
 
+<!-- Form update success message -->
+{% if messages %}
+{% for message in messages %}
+<div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
 
 <div class="container-fluid" id="profile-container">
   <div class="row">
@@ -22,15 +31,6 @@ My Profile
     </div>
 
     <div class="col-lg-4">
-
-      <!-- Form update success message -->
-      {% if messages %}
-      {% for message in messages %}
-      <div class="text-center alert alert-primary {{ message.tags }}" role="alert">
-        {{ message }}
-      </div>
-      {% endfor %}
-      {% endif %}
 
       <!-- User Profile edit section -->
 
@@ -80,25 +80,6 @@ My Profile
               </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- User Post Feed -->
-    <div class="col-lg-3 user-post-feed">
-      <h3>My Post Feed</h3>
-      <div class="row">
-        {% for post in object_list %}
-        <div class="card text-white bg-dark user-posts" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">{{ post.author }}</h4>
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.body }}</p>
-            <p class="card-text"> Created: {{ post.created_time }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-          {% endfor %}
         </div>
       </div>
     </div>
