@@ -5,6 +5,11 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
+        <a href="{% url 'my-post' %}" class="nav-link" aria-current="page">
+          My Posts Feed
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="#" class="nav-link" aria-current="page">
           Posts Feed
         </a>
@@ -20,7 +25,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link active text-white">
+        <a href="{% url 'profile' %}" class="nav-link active text-white">
           My Profile
         </a>
       </li>
