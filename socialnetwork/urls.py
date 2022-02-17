@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('posts/', PostsView.as_view(), name='posts'),
     path('myposts/', UserPostsView.as_view(), name='my-posts'),
+    # path('myposts/', CreatePost.as_view(), name='my-posts'),
 ]
