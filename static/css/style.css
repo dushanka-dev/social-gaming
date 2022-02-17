@@ -10,10 +10,10 @@ body {
     color: rgb(255, 255, 255);
 }
 
-/* Navbar */
+/* Navbar & Footer*/
 
-.navbar {
-    background-color: rgb(0, 0, 0);
+.top-navbar {
+    /* background-color: rgb(0, 0, 0); */
     border-bottom: 1px solid #FF7524;
 }
 
@@ -46,6 +46,13 @@ body {
 .navbar-brand:hover {
     color: #aa988e;
 }
+
+.footer-navbar {
+    border-top: 1px solid #FF7524;
+}
+
+/* Landing Page */
+
 #landing {
     background-color: rgb(94, 71, 55);
 }
@@ -98,22 +105,22 @@ body {
     color: #fff;
     background-color: #7a7673;
 }
-/* .profile-pic {
-    width: 70%;
-    height: 70%;
-    border-radius: 50%;
+
+/* User Posts */
+
+.user-post-feed {
+    border: 1px solid #FF7524;
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 
-.form-valid {
-    background-color: green;
-    width: 30%;
-    display: inline-block;
-    text-align: center;
-    padding: 10px 0;
+.user-posts {
     margin: 10px 0;
-} */
+}
 
-/* Profile Modal */
+
+
+
 
 #staticBackdrop {
     color: #000;
