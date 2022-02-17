@@ -5,14 +5,37 @@
 {% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 profile-sidebar">
+      {% block sidebar %}
+    <nav>
+        {% include "socialnetwork/sidebar.html" %}
+    </nav>
+      {% endblock %}
+      
+    </div>
 
-<div class="col-lg-3 profile-sidebar">
-  {% block sidebar %}
-<nav>
-    {% include "socialnetwork/sidebar.html" %}
-</nav>
-  {% endblock %}
-  
+    <!-- Post Feed -->
+    <div class="col-lg-5 user-post-feed">
+      <h3>Post Feed</h3>
+      {% for post in object_list %}
+      <div class="row">
+        <div class="card text-white bg-dark user-posts" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">{{ post.author }}</h4>
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body }}</p>
+            <p class="card-text"> Created: {{ post.created_time }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
 </div>
 
 {% endblock %}
