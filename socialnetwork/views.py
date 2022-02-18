@@ -34,7 +34,7 @@ class PostsView(ListView):
 class UserPostsView(View):
     """Display users posts"""
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         """Display users posts"""
         user_posts = Post.objects.filter(author=self.request.user)
         form = CreatePostForm()
