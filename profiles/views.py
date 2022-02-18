@@ -17,11 +17,11 @@ class UpdateProfile(UpdateView):
     fields = ['first_name', 'last_name', 'email', 'bio', 'favourite_game', 'user_picture']
     template_name = 'profiles/userprofile.html'
     success_url = 'profile'
-    success_message = 'Your Profile Updated Successfully!'
+    # success_message = 'Your Profile Updated Successfully!'
 
     def get_object(self, queryset=None):
-        obj = obj = get_object_or_404(UserProfile, user=self.request.user)
-        return obj
+        user_obj = get_object_or_404(UserProfile, user=self.request.user)
+        return user_obj
 
     def form_valid(self, form):
         messages.success(self.request, 'Your Profile Updated Successfully!')
