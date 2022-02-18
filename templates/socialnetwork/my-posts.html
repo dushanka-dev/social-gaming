@@ -18,9 +18,9 @@
 {% endfor %}
 {% endif %}
 
-<div class="container-fluid">
+<div class="container-fluid posts-container">
   <div class="row">
-    <div class="col-lg-3 profile-sidebar">
+    <div class="col-lg-2 profile-sidebar">
       {% block sidebar %}
     <nav>
         {% include "socialnetwork/sidebar.html" %}
@@ -30,11 +30,11 @@
     </div>
 
     <!-- User Post Feed -->
-    <div class="col-lg-5 user-post-feed">
+    <div class="col-lg-4 user-post-feed">
       <h3>My Post Feed</h3>
       {% for post in user_post_list %}
       <div class="row">
-        <div class="card text-white bg-dark user-posts" style="width: 18rem;">
+        <!-- <div class="card text-white bg-dark user-posts" style="width: 18rem;">
           <img src="..." class="card-img-top" alt="...">
           <div class="card-body">
             <h4 class="card-title">Created by: {{ post.author }}</h4>
@@ -43,12 +43,29 @@
             <p class="card-text"> Created: {{ post.created_time }}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
+        </div> -->
+        <div class="card text-white bg-dark user-posts" style="width: 40rem;">
+          <div class="card-header">
+            <h6>Created by:</h6>
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none"
+                aria-expanded="false">
+                <img src="{{userprofile.user_picture.url}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>{{ post.author }}</strong>
+              </a>
+
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ post.title }} </h4>
+            <p class="card-text">{{ post.body }}</p>
+            <a href="#" class="btn btn-primary">Edit Post <i class="fa-solid fa-pen"></i></a>
+            <button type="button" class="btn btn-danger">Delete Post <i class="fa-solid fa-trash"></i></button>
+          </div>
         </div>
       </div>
       {% endfor %}
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 create-posts">
       <h4>Add Post</h4>
       <form method="POST" action="" class="" enctype=multipart/form-data>
         {% csrf_token %}
