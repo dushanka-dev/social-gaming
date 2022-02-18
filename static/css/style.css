@@ -10,11 +10,26 @@ body {
     color: rgb(255, 255, 255);
 }
 
+/* Main Colors */
+
+/* #FF7524; */
+
+/* background-color: #FF7524; */
+
+.sidebar {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+}
+
+.create-posts, .user-post-feed, .profile-detail-card {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
 /* Navbar & Footer*/
 
 .top-navbar {
     /* background-color: rgb(0, 0, 0); */
-    border-bottom: 1px solid #FF7524;
+    border-bottom: 1px solid rgb(9, 87, 172);
 }
 
 .nav-link {
@@ -27,7 +42,7 @@ body {
 }
 
 .navbar-dark .navbar-brand {
-    color: #FF7524;
+    color: rgb(9, 87, 172);
     font-family: 'Wire One', sans-serif;
     font-size: 35px;
     font-weight: 700;
@@ -36,7 +51,7 @@ body {
 }
 
 .navbar-dark .navbar-toggler {
-    border-color: #FF7524;
+    border-color: rgb(9, 87, 172);
 }
 
 .navbar-toggler .navbar-toggler-icon {
@@ -48,7 +63,22 @@ body {
 }
 
 .footer-navbar {
-    border-top: 1px solid #FF7524;
+    border-top: 1px solid rgb(9, 87, 172);
+}
+
+/* Sidebar Menu */
+
+.sidebar-menu li a{
+    color: rgb(9, 87, 172);
+}
+
+.sidebar-menu li i{
+    color: rgb(9, 87, 172);
+    margin-right: 10px;
+}
+
+.nav-pills .nav-link.active {
+    background: #cac9d1;
 }
 
 /* Landing Page */
@@ -76,7 +106,6 @@ body {
 }
 
 .profile-sidebar {
-    background-color: #4b4542;
     padding: 30px 5px;
     border-radius: 5%;
 }
@@ -108,8 +137,13 @@ body {
 
 /* User Posts */
 
+.posts-container {
+    margin: 70px 0;
+}
+
 .user-post-feed {
-    border: 1px solid #FF7524;
+    margin: 0 20px;
+    padding: 20px 40px;
     max-height: 80vh;
     overflow-y: scroll;
 }
@@ -118,9 +152,17 @@ body {
     margin: 10px 0;
 }
 
+/* Create Post form */
 
+.create-posts {
+    margin-left: 60px;
+    padding: 40px;
+    height: 60vh;
+}
 
-
+.create-posts input, textarea.form-control {
+    background-color: #252322;
+}
 
 #staticBackdrop {
     color: #000;
