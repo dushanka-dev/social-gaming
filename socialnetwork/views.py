@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
+from django.views.generic.edit import UpdateView, DeleteView
 # from django.http import HttpResponse
 from django.contrib import messages
 from .models import Post
@@ -20,23 +23,12 @@ class PostsView(ListView):
     ordering = ['-created_time']
 
 
-# class UserPostsView(ListView):
-#     """Display users posts"""
-#     model = Post
-#     template_name = 'socialnetwork/my-posts.html'
-#     ordering = ['-created_time']
-
-#     def get_queryset(self):
-#         """Display users posts"""
-#         user_posts = Post.objects.filter(author=self.request.user)
-#         return user_posts
-
 class UserPostsView(View):
     """Display users posts"""
 
     def get(self, request):
         """Display users posts"""
-        user_posts = Post.objects.filter(author=self.request.user)
+        user_posts = Post.objects.filter(author=self.request.user).order_by('-post_date')
         form = CreatePostForm()
 
         context = {
@@ -65,3 +57,33 @@ class UserPostsView(View):
 
         return render(request, 'socialnetwork/my-posts.html', context)
 
+class EditPosts(UpdateView):
+    """Let users update posts"""
+
+    model = Post
+    # form_class = ProfileForm
+    fields = ['title', 'body']
+    template_name = 'socialnetwork/edit-posts.html'
+    pk_url_kwarg = 'pk'
+    success_url = 'my-posts'
+    ordering = ['-post_date']
+    # ordering = ['-created_time']
+    # success_message = 'Your Profile Updated Successfully!'
+
+    # def get_object(self, queryset=None):
+    #     user_obj = get_object_or_404(Post, author=self.request.user)
+    #     return user_obj
+
+    def get_success_url(self):
+        return reverse('my-posts')
+
+class DeletePost(DeleteView):
+    """Delete selected user posts"""
+
+    model = Post
+    pk_url_kwarg = 'pk'
+    template_name = 'socialnetwork/delete-post.html'
+    success_url = 'my-posts'
+
+    def get_success_url(self):
+        return reverse('my-posts')
