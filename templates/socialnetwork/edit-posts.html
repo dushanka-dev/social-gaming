@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Posts Feed
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<!-- Form update success message -->
+{% if messages %}
+{% for message in messages %}
+<div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container-fluid posts-container">
+  <div class="row">
+    <div class="col-lg-2 profile-sidebar">
+      {% block sidebar %}
+    <nav>
+        {% include "socialnetwork/sidebar.html" %}
+    </nav>
+      {% endblock %}
+      
+    </div>
+
+    <!-- User Post Feed -->
+
+    <div class="col-lg-4 create-posts">
+      <h4>Edit Post</h4>
+      <form method="POST" action="" class="" enctype=multipart/form-data>
+        {% csrf_token %}
+
+        {{ form | crispy}}
+
+        <button type="submit" class="btn btn-primary"> Update</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
