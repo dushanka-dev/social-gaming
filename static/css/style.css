@@ -161,6 +161,7 @@ body {
 }
 
 .create-posts input, textarea.form-control {
+    color: #fff;
     background-color: #252322;
 }
 
