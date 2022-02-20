@@ -6,8 +6,20 @@
     padding: 0;
 }
 body {
-    background-color: rgb(0, 0, 0);
+    background-color: #231B2A;
     color: rgb(255, 255, 255);
+}
+
+h2, h3 {
+    font-family: 'Wire One', sans-serif;
+    color: #E75900;
+    font-size: 40px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+}
+
+h4 {
+    color: #E75900;
 }
 
 /* Main Colors */
@@ -29,7 +41,7 @@ body {
 
 .top-navbar {
     /* background-color: rgb(0, 0, 0); */
-    border-bottom: 1px solid rgb(9, 87, 172);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .nav-link {
@@ -42,12 +54,16 @@ body {
 }
 
 .navbar-dark .navbar-brand {
-    color: rgb(9, 87, 172);
+    color: #E75900;
     font-family: 'Wire One', sans-serif;
     font-size: 35px;
     font-weight: 700;
     letter-spacing: 3px;
 
+}
+
+.navbar-dark .navbar-brand i {
+    margin-right: 10px;
 }
 
 .navbar-dark .navbar-toggler {
@@ -63,17 +79,17 @@ body {
 }
 
 .footer-navbar {
-    border-top: 1px solid rgb(9, 87, 172);
+    box-shadow: rgb(38, 57, 77) 0px 20px 5px 10px;
 }
 
 /* Sidebar Menu */
 
 .sidebar-menu li a{
-    color: rgb(9, 87, 172);
+    color: #E75900;
 }
 
 .sidebar-menu li i{
-    color: rgb(9, 87, 172);
+    color: #E75900;
     margin-right: 10px;
 }
 
@@ -144,7 +160,7 @@ body {
 .user-post-feed {
     margin: 0 20px;
     padding: 20px 40px;
-    max-height: 80vh;
+    max-height: 90vh;
     overflow-y: scroll;
 }
 
@@ -152,6 +168,25 @@ body {
     margin: 10px 0;
 }
 
+.post-body {
+    margin: 30px 0;
+}
+
+.post-time {
+    float: right;
+}
+
+.user-posts span {
+    margin-right: 10px;
+}
+
+.user-posts span i{
+    margin-right: 10px;
+}
+
+.post-btn {
+    margin: 15px 0 10px 0;
+}
 /* Create Post form */
 
 .create-posts {
