@@ -62,7 +62,7 @@ class EditPosts(UpdateView):
 
     model = Post
     # form_class = ProfileForm
-    fields = ['title', 'body']
+    fields = ['title', 'body', 'post_picture']
     template_name = 'socialnetwork/edit-posts.html'
     pk_url_kwarg = 'pk'
     success_url = 'my-posts'
