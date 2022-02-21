@@ -34,16 +34,6 @@
       <h3>My Post Feed</h3>
       {% for post in user_post_list %}
       <div class="row">
-        <!-- <div class="card text-white bg-dark user-posts" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">Created by: {{ post.author }}</h4>
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.body }}</p>
-            <p class="card-text"> Created: {{ post.created_time }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div> -->
         <div class="card text-white bg-dark user-posts" style="width: 40rem;">
           <div class="card-header">
               <a href="#" class="d-flex align-items-center text-white text-decoration-none"
@@ -60,6 +50,8 @@
             {% if post.post_picture %}
               <img src="{{post.post_picture.url}}" class="img-thumbnail post-pic" alt="user-profile-image" multiple>
             {% endif %}
+
+            <!-- Post Likes -->
             <p>
               <span><i class="fa-solid fa-thumbs-up"></i>Like</span>
               <span><i class="fa-solid fa-comments"></i>Comment</span>

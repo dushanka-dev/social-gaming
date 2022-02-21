@@ -54,8 +54,8 @@
               <span><i class="fa-solid fa-comments"></i>Comment</span>
             </p>
             {% if post.author == request.user %}
-            <a href="{% url 'edit-posts' post.slug %}" class="btn btn-primary post-btn">Edit Post <i class="fa-solid fa-pen"></i></a>
-            <a href="{% url 'delete-posts' post.slug %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a>
+            <a href="{% url 'edit-posts' post.pk %}" class="btn btn-primary post-btn">Edit Post <i class="fa-solid fa-pen"></i></a>
+            <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a>
             {% endif %}
           </div>
         </div>
