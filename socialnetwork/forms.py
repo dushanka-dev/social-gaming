@@ -9,4 +9,4 @@ class CreatePostForm(forms.ModelForm):
         """Get post model fields to add to form"""
 
         model = Post
-        fields = ('title', 'body')
+        fields = ('title', 'body', 'post_picture')
