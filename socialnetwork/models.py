@@ -15,6 +15,7 @@ class Post(models.Model):
     post_picture = models.ImageField(blank=True, null=True, upload_to='uploads/')
     created_time = models.DateTimeField(auto_now=True)
     post_date = models.DateField(default=timezone.now)
+    likes = models.ManyToManyField(User, related_name='userpost_likes', blank=True)
 
     def __str__(self):
         return f'{self.author}-{self.title}'
