@@ -64,7 +64,7 @@ class EditPosts(UpdateView):
     # form_class = ProfileForm
     fields = ['title', 'body', 'post_picture']
     template_name = 'socialnetwork/edit-posts.html'
-    pk_url_kwarg = 'pk'
+    slug_url_kwarg = 'slug'
     success_url = 'my-posts'
     ordering = ['-post_date']
     # ordering = ['-created_time']
@@ -81,7 +81,7 @@ class DeletePost(DeleteView):
     """Delete selected user posts"""
 
     model = Post
-    pk_url_kwarg = 'pk'
+    slug_url_kwarg = 'slug'
     template_name = 'socialnetwork/delete-post.html'
     success_url = 'my-posts'
 
