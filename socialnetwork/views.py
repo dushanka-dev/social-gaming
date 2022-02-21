@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
@@ -57,14 +56,15 @@ class UserPostsView(View):
 
         return render(request, 'socialnetwork/my-posts.html', context)
 
+
 class EditPosts(UpdateView):
     """Let users update posts"""
 
     model = Post
     # form_class = ProfileForm
     fields = ['title', 'body', 'post_picture']
+    pk_url_kwarg = 'pk'
     template_name = 'socialnetwork/edit-posts.html'
-    slug_url_kwarg = 'slug'
     success_url = 'my-posts'
     ordering = ['-post_date']
     # ordering = ['-created_time']
@@ -77,11 +77,12 @@ class EditPosts(UpdateView):
     def get_success_url(self):
         return reverse('my-posts')
 
+
 class DeletePost(DeleteView):
     """Delete selected user posts"""
 
     model = Post
-    slug_url_kwarg = 'slug'
+    pk_url_kwarg = 'pk'
     template_name = 'socialnetwork/delete-post.html'
     success_url = 'my-posts'
 
