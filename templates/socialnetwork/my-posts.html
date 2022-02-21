@@ -46,22 +46,24 @@
         </div> -->
         <div class="card text-white bg-dark user-posts" style="width: 40rem;">
           <div class="card-header">
-            <h6>Created by:</h6>
               <a href="#" class="d-flex align-items-center text-white text-decoration-none"
                 aria-expanded="false">
                 <img src="{{userprofile.user_picture.url}}" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong>{{ post.author }}</strong>
               </a>
+              <p class="card-text post-time">{{ post.created_time }}</p>
 
           </div>
           <div class="card-body">
             <h4 class="card-title">{{ post.title }} </h4>
             <p class="card-text post-body">{{ post.body }}</p>
+            {% if post.post_picture %}
+              <img src="{{post.post_picture.url}}" class="img-thumbnail post-pic" alt="user-profile-image" multiple>
+            {% endif %}
             <p>
               <span><i class="fa-solid fa-thumbs-up"></i>Like</span>
               <span><i class="fa-solid fa-comments"></i>Comment</span>
             </p>
-            <p class="card-text post-time">{{ post.created_time }}</p>
             <a href="{% url 'edit-posts' post.pk %}" class="btn btn-primary post-btn">Edit Post <i class="fa-solid fa-pen"></i></a>
             <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a>
           </div>
@@ -75,6 +77,7 @@
       <form method="POST" action="" class="" enctype=multipart/form-data>
         {% csrf_token %}
 
+        <!-- {{ form.media }} -->
         {{ form | crispy}}
 
         <button type="submit" class="btn btn-primary"> Update</button>
