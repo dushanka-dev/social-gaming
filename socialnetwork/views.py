@@ -41,7 +41,7 @@ class UserPostsView(View):
         """Display users posts"""
         posts = Post.objects.filter(author=self.request.user)
         new_posts = posts.order_by('-created_time')
-        form = CreatePostForm(request.POST)
+        form = CreatePostForm(request.POST, request.FILES)
 
         if form.is_valid():
             users_new_post = form.save(commit=False)
