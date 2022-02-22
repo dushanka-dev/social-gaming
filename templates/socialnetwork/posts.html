@@ -49,10 +49,14 @@
             {% if post.post_picture %}
               <img src="{{post.post_picture.url}}" class="img-thumbnail post-pic" alt="user-profile-image" multiple>
             {% endif %}
-            <p>
-              <span><i class="fa-solid fa-thumbs-up"></i>Like</span>
+            <div class="d-flex flex-row">
+              <form method="POST" action="{% url 'likes' post.pk %}" class="" enctype=multipart/form-data>
+                {% csrf_token %}
+                
+                <button type="submit" class="btn btn-primary btn-lg like-btn"><i class="fa-solid fa-thumbs-up"></i><span>{{ post.likes.all.count }}</span></button>
+              </form>
               <span><i class="fa-solid fa-comments"></i>Comment</span>
-            </p>
+            </div>
             {% if post.author == request.user %}
             <a href="{% url 'edit-posts' post.pk %}" class="btn btn-primary post-btn">Edit Post <i class="fa-solid fa-pen"></i></a>
             <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a>

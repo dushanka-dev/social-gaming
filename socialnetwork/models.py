@@ -23,3 +23,15 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
+
+
+class Comment(models.Model):
+    """Allow users to add cmments to posts of other users."""
+
+    users = models.ForeignKey(User, on_delete=models.CASCADE)
+    posts = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    comments = models.TextField(max_length=800, blank=True)
+    comment_date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.posts}-{self.users}'

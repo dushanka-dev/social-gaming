@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
@@ -20,6 +21,27 @@ class PostsView(ListView):
     model = Post
     template_name = 'socialnetwork/posts.html'
     ordering = ['-created_time']
+    
+
+class Likes(View):
+    """Display all posts"""
+
+    def post(self, request, pk):
+        """Display all posts"""
+        posts = Post.objects.get(pk=pk)
+        liked = False
+
+        for like in posts.likes.all():
+            if like == request.user:
+                liked = True
+                break
+        else:
+            posts.likes.add(request.user)
+
+        if liked:
+            posts.likes.remove(request.user)
+
+        return HttpResponseRedirect(reverse('posts'))
 
 
 class UserPostsView(View):
