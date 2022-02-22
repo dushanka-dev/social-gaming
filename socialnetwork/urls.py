@@ -9,5 +9,4 @@ urlpatterns = [
     path('myposts/', UserPostsView.as_view(), name='my-posts'),
     path('editposts/<int:pk>/', EditPosts.as_view(), name='edit-posts'),
     path('deleteposts/<int:pk>/', DeletePost.as_view(), name='delete-posts'),
-    # path('myposts/', CreatePost.as_view(), name='my-posts'),
 ]

@@ -172,9 +172,9 @@ h4 {
     margin: 30px 0;
 }
 
-.post-time {
+/* .post-time {
     float: right;
-}
+} */
 
 .user-posts span {
     margin-right: 10px;
@@ -198,6 +198,12 @@ h4 {
 .create-posts input, textarea.form-control {
     color: #fff;
     background-color: #252322;
+}
+
+.post-pic {
+    width: 150px;
+    height: auto;
+    margin: 40px 0;
 }
 
 #staticBackdrop {
