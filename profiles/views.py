@@ -3,12 +3,19 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 # from django.views.generic.list import ListView
+from django.views.generic import ListView
 from django.views.generic.edit import UpdateView
 # from django.views.generic.edit import UpdateView
-from .models import UserProfile
+from .models import UserProfile, Friend
 # from .forms import ProfileForm
 
 # Create your views here.
+
+class FriendList(ListView):
+    """Display all posts"""
+    model = Friend
+    template_name = 'profiles/friends.html'
+
 
 class UpdateProfile(UpdateView):
     """Update Profile Model objects to display in template and POST data back to db"""
