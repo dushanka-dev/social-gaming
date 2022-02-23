@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Profiles
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+
+<div class="container-fluid" id="profile-container">
+  <div class="row">
+    <div class="col-lg-3 profile-sidebar">
+      {% block sidebar %}
+    <nav>
+        {% include "socialnetwork/sidebar.html" %}
+    </nav>
+      {% endblock %}
+      
+    </div>
+
+    <div class="col-lg-4">
+
+      <!-- User Profile section -->
+
+      <div class="card profile-detail-card">
+        <img src="{{userprofile.user_picture.url}}" class="card-img-top" alt="user-profile-image">
+        <div class="card-body profile-card-content">
+          <h5 class="card-title">User Details</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username: {{ object.user }}</li>
+            <li class="list-group-item">First Name: {{ object.first_name }} </li>
+            <li class="list-group-item">Last Name: {{ user.userprofile.last_name }} </li>
+            <li class="list-group-item">Email: {{ user.userprofile.email }} </li>
+            <li class="list-group-item">Bio: {{ user.userprofile.bio }} </li>
+            <li class="list-group-item">Favourite Game: {{ user.userprofile.favourite_game }} </li>
+            <li class="list-group-item">Country: {{ user.userprofile.country }} </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+{% endif %}
+
+{% endblock %}
