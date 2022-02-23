@@ -11,6 +11,10 @@ body {
     color: rgb(255, 255, 255);
 }
 
+.block-container {
+    height: 100vh;
+}
+
 h2, h3 {
     font-family: 'Wire One', sans-serif;
     color: #E75900;
