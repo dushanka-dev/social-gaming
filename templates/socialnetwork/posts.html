@@ -21,16 +21,6 @@
       <h3>Post Feed</h3>
       {% for post in object_list %}
       <div class="row">
-        <!-- <div class="card text-white bg-dark user-posts" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">{{ post.author }}</h4>
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.body }}</p>
-            <p class="card-text"> Created: {{ post.created_time }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div> -->
 
         <div class="card text-white bg-dark user-posts" style="width: 40rem;">
           <div class="card-header">
@@ -55,7 +45,30 @@
                 
                 <button type="submit" class="btn btn-primary btn-lg like-btn"><i class="fa-solid fa-thumbs-up"></i><span>{{ post.likes.all.count }}</span></button>
               </form>
-              <span><i class="fa-solid fa-comments"></i>Comment</span>
+
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                  Comment<i class="fa-solid fa-comments"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                  {% if not post.comments.all %}
+                  <p>No comments yet...</p>
+                  {% else %}
+                  {% for comment in post.comments.all %}
+                  <li>
+                    <li><hr class="dropdown-divider"></li>
+                    <h6>Comment by: {{ comment.users}}</h6>
+                    <p>{{ comment.body}}</p>
+                    <p>Date: {{ comment.comment_created}}</p>
+                  </li>
+                  {% endfor %}
+                  {% endif %}
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </div>
+
+
             </div>
             {% if post.author == request.user %}
             <a href="{% url 'edit-posts' post.pk %}" class="btn btn-primary post-btn">Edit Post <i class="fa-solid fa-pen"></i></a>
