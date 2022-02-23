@@ -30,8 +30,8 @@ class Comment(models.Model):
 
     users = models.ForeignKey(User, on_delete=models.CASCADE)
     posts = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
-    comments = models.TextField(max_length=800, blank=True)
-    comment_date = models.DateField(default=timezone.now)
+    body = models.TextField(max_length=600, blank=True)
+    comment_created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.posts}-{self.users}'
