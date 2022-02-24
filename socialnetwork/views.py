@@ -1,13 +1,14 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 # from django.http import HttpResponse
 from django.contrib import messages
-from .models import Post
-from .forms import CreatePostForm
+from .models import Post, Comment
+from .forms import CreatePostForm, CommentsForm
 # from profiles.models import UserProfile
 
 
@@ -21,7 +22,29 @@ class PostsView(ListView):
     model = Post
     template_name = 'socialnetwork/posts.html'
     ordering = ['-created_time']
-    
+
+
+class CreateComment(CreateView):
+    """Let users create comment"""
+
+    model = Comment
+    form = CommentsForm
+    fields = ['body']
+    template_name = 'socialnetwork/comment.html'
+    success_url = 'socialnetwork/posts.html'
+    ordering = ['-comment_created']
+
+    def form_valid(self, form):
+        # form.instance.post_id = self.kwargs['pk']
+        form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
+        form.instance.users = self.request.user
+        
+        messages.success(self.request, 'Your Profile Updated Successfully!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('posts')
+
 
 class Likes(View):
     """Display all posts"""
