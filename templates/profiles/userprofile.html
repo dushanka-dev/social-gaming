@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<!-- Form update success message -->
+{% if messages %}
+{% for message in messages %}
+<div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<div class="container-fluid" id="profile-container">
+  <div class="row">
+    <div class="col-lg-3 profile-sidebar">
+      {% block sidebar %}
+    <nav>
+        {% include "socialnetwork/sidebar.html" %}
+    </nav>
+      {% endblock %}
+      
+    </div>
+
+    <div class="col-lg-4">
+
+      <!-- User Profile edit section -->
+
+      <div class="card profile-detail-card">
+        <img src="{{userprofile.user_picture.url}}" class="card-img-top" alt="user-profile-image">
+        <div class="card-body profile-card-content">
+          <h5 class="card-title">My Details</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username: {{ user }}</li>
+            <li class="list-group-item">First Name: {{ user.userprofile.first_name }} </li>
+            <li class="list-group-item">Last Name: {{ user.userprofile.last_name }} </li>
+            <li class="list-group-item">Email: {{ user.userprofile.email }} </li>
+            <li class="list-group-item">Bio: {{ user.userprofile.bio }} </li>
+            <li class="list-group-item">Favourite Game: {{ user.userprofile.favourite_game }} </li>
+            <li class="list-group-item">Country: {{ user.userprofile.country }} </li>
+          </ul>
+
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Update Profile
+        </button>
+
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="" class="" enctype=multipart/form-data>
+                {% csrf_token %}
+
+                {{ form | crispy}}
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary"> Update</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% else %}
+
+      <p>Please login</p>
+
+      {% endif %}
+
+{% endblock %}

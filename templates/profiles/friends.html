@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Friends
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid posts-container">
+  <div class="row">
+    <div class="col-lg-3 profile-sidebar">
+      {% block sidebar %}
+    <nav>
+        {% include "socialnetwork/sidebar.html" %}
+    </nav>
+      {% endblock %}
+      
+    </div>
+
+    <!-- Post Feed -->
+    <div class="col-lg-5 user-post-feed">
+      <h3>All Friends</h3>
+      <h3>{{ friend.number_of_friends }}</h3>
+      {% for friend in object_list %}
+      <!-- {% if friend.friend_status == 'accepted' %} -->
+      <div class="row">
+          <h3>{{ friend.friend_receiver }}</h3>
+        
+      </div>
+      <!-- {% endif %} -->
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
