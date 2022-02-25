@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Posts Feed
@@ -6,6 +7,16 @@
 
 {% block content %}
 <div class="container-fluid posts-container">
+
+   <!-- Form update success message -->
+{% if messages %}
+{% for message in messages %}
+<div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
   <div class="row">
     <div class="col-lg-3 profile-sidebar">
       {% block sidebar %}
@@ -27,7 +38,7 @@
             <h6>Created by:</h6>
               <a href="{% url 'usersprofile' post.author.pk %}" class="d-flex align-items-center text-white text-decoration-none"
                 aria-expanded="false">
-                <img src="{{userprofile.user_picture.url}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                <img src="{{user.userprofile.user_picture.url}}" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong>{{ post.author }}</strong>
               </a>
               <p class="card-text post-time">{{ post.created_time }}</p>
@@ -46,39 +57,54 @@
                 <button type="submit" class="btn btn-primary btn-lg like-btn"><i class="fa-solid fa-thumbs-up"></i><span>{{ post.likes.all.count }}</span></button>
               </form>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                  Comment<i class="fa-solid fa-comments"></i>
-                </button>
-
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                  {% if not post.comments.all %}
-                  <p>No comments yet...</p>
-                  {% else %}
-                  {% for comment in post.comments.all %}
-                  <li>
-                    <li><hr class="dropdown-divider"></li>
-                    <h6>Comment by: {{ comment.users}}</h6>
-                    <p>{{ comment.body}}</p>
-                    <p>Date: {{ comment.comment_created}}</p>
-                  </li>
-                  {% endfor %}
-                  {% endif %}
-                  <li><hr class="dropdown-divider"></li>
-                </ul>
-              </div>
-
 
             </div>
             {% if post.author == request.user %}
             <a href="{% url 'edit-posts' post.pk %}" class="btn btn-primary post-btn">Edit Post <i class="fa-solid fa-pen"></i></a>
             <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a>
             {% endif %}
+            
+            <div>
+              <button class="comment-btn">Comment<i class="fa-solid fa-comments"></i></button>
+              <ul class="comments">
+                {% if not post.comments.all %}
+
+                <li><hr class="dropdown-divider"></li>
+                
+                <p>No comments yet...</p>
+                <a href="{% url 'comment' post.pk %}">Add Comment<i class="fa-solid fa-pen"></i></a>
+                {% else %}
+                {% for comment in post.comments.all %}
+                <li>
+                  <li><hr class="dropdown-divider"></li>
+                  <h6>Comment by: {{ comment.users}}</h6>
+                  <p>{{ comment.body}}</p>
+                  <p>Date: {{ comment.comment_created}}</p>
+
+                  {% if comment.users == request.user %}
+                  <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-primary post-btn">Edit comment <i class="fa-solid fa-pen"></i></a>
+                  <!-- <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a> -->
+                  {% endif %}
+
+                </li>
+                {% endfor %}
+                <a href="{% url 'comment' post.pk %}">Add Comment<i class="fa-solid fa-pen"></i></a>
+                {% endif %}
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+
+            </div>
+
+
+
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
+
+    <!-- Post Feed -->
+    
 
   </div>
 </div>

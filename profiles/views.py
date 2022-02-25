@@ -8,7 +8,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView
 # from django.views.generic.edit import UpdateView
-from .models import UserProfile, Friend
+from .models import UserProfile
 # from .forms import ProfileForm
 
 # Create your views here.
@@ -22,10 +22,10 @@ class Profiles(DetailView):
     template_name_field = 'profile'
 
 
-class FriendList(ListView):
-    """Display all posts"""
-    model = Friend
-    template_name = 'profiles/friends.html'
+# class FriendList(ListView):
+#     """Display all posts"""
+#     model = Friend
+#     template_name = 'profiles/friends.html'
 
 
 class UpdateProfile(UpdateView):

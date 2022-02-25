@@ -1,14 +1,13 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
-from django.views.generic.edit import UpdateView, DeleteView
-# from django.http import HttpResponse
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib import messages
-from .models import Post
-from .forms import CreatePostForm
-# from profiles.models import UserProfile
+from .models import Post, Comment
+from .forms import CreatePostForm, CommentsForm
 
 
 def home(response):
@@ -21,7 +20,7 @@ class PostsView(ListView):
     model = Post
     template_name = 'socialnetwork/posts.html'
     ordering = ['-created_time']
-    
+
 
 class Likes(View):
     """Display all posts"""
@@ -89,12 +88,10 @@ class EditPosts(UpdateView):
     template_name = 'socialnetwork/edit-posts.html'
     success_url = 'my-posts'
     ordering = ['-post_date']
-    # ordering = ['-created_time']
-    # success_message = 'Your Profile Updated Successfully!'
 
-    # def get_object(self, queryset=None):
-    #     user_obj = get_object_or_404(Post, author=self.request.user)
-    #     return user_obj
+    def form_valid(self, form):
+        messages.success(self.request, 'Post edited Successfully!')
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('my-posts')
@@ -108,5 +105,54 @@ class DeletePost(DeleteView):
     template_name = 'socialnetwork/delete-post.html'
     success_url = 'my-posts'
 
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Post deleted Successfully!')
+        return super(DeletePost, self).delete(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse('my-posts')
+
+
+class CreateComment(CreateView):
+    """Let users create comment"""
+
+    model = Comment
+    form = CommentsForm
+    fields = ['body']
+    template_name = 'socialnetwork/comment.html'
+    success_url = 'socialnetwork/posts.html'
+    ordering = ['-comment_created']
+
+    def form_valid(self, form):
+        # form.instance.post_id = self.kwargs['pk']
+        form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
+        form.instance.users = self.request.user
+        
+        messages.success(self.request, 'Comment created Successfully!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('posts')
+
+
+class EditComment(UpdateView):
+    """Let users edit comments"""
+
+    model = Comment
+    # form_class = ProfileForm
+    fields = ['body']
+    pk_url_kwarg = 'pk'
+    template_name = 'socialnetwork/edit-comment.html'
+    success_url = 'posts'
+    # ordering = ['-post_date']
+
+    def form_valid(self, form):
+        # form.instance.post_id = self.kwargs['pk']
+        # form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
+        # form.instance.users = self.request.user
+        
+        messages.success(self.request, 'Comment updated Successfully!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('posts')
