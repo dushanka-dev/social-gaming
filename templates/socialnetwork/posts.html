@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Posts Feed
@@ -64,7 +65,7 @@
             {% endif %}
             
             <div>
-              <h6>Comment<i class="fa-solid fa-comments"></i></h6>
+              <button class="comment-btn">Comment<i class="fa-solid fa-comments"></i></button>
               <ul class="comments">
                 {% if not post.comments.all %}
 
@@ -79,6 +80,12 @@
                   <h6>Comment by: {{ comment.users}}</h6>
                   <p>{{ comment.body}}</p>
                   <p>Date: {{ comment.comment_created}}</p>
+
+                  {% if comment.users == request.user %}
+                  <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-primary post-btn">Edit comment <i class="fa-solid fa-pen"></i></a>
+                  <!-- <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a> -->
+                  {% endif %}
+
                 </li>
                 {% endfor %}
                 <a href="{% url 'comment' post.pk %}">Add Comment<i class="fa-solid fa-pen"></i></a>
