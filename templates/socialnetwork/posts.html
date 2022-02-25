@@ -53,7 +53,9 @@
 
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                   {% if not post.comments.all %}
+                  
                   <p>No comments yet...</p>
+                  <a href="{% url 'comment' post.pk %}">Add Comment<i class="fa-solid fa-pen"></i></a>
                   {% else %}
                   {% for comment in post.comments.all %}
                   <li>
@@ -63,6 +65,7 @@
                     <p>Date: {{ comment.comment_created}}</p>
                   </li>
                   {% endfor %}
+                  <a href="{% url 'comment' post.pk %}">Add Comment<i class="fa-solid fa-pen"></i></a>
                   {% endif %}
                   <li><hr class="dropdown-divider"></li>
                 </ul>
