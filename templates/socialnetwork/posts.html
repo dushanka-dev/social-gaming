@@ -6,6 +6,15 @@
 
 {% block content %}
 <div class="container-fluid posts-container">
+
+  <!-- Form update success message -->
+{% if messages %}
+{% for message in messages %}
+<div class="text-center alert alert-primary {{ message.tags }}" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
   <div class="row">
     <div class="col-lg-3 profile-sidebar">
       {% block sidebar %}
