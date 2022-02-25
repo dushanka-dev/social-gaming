@@ -22,28 +22,6 @@ class PostsView(ListView):
     ordering = ['-created_time']
 
 
-class CreateComment(CreateView):
-    """Let users create comment"""
-
-    model = Comment
-    form = CommentsForm
-    fields = ['body']
-    template_name = 'socialnetwork/comment.html'
-    success_url = 'socialnetwork/posts.html'
-    ordering = ['-comment_created']
-
-    def form_valid(self, form):
-        # form.instance.post_id = self.kwargs['pk']
-        form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
-        form.instance.users = self.request.user
-        
-        messages.success(self.request, 'Comment created Successfully!')
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('posts')
-
-
 class Likes(View):
     """Display all posts"""
 
@@ -133,3 +111,48 @@ class DeletePost(DeleteView):
 
     def get_success_url(self):
         return reverse('my-posts')
+
+
+class CreateComment(CreateView):
+    """Let users create comment"""
+
+    model = Comment
+    form = CommentsForm
+    fields = ['body']
+    template_name = 'socialnetwork/comment.html'
+    success_url = 'socialnetwork/posts.html'
+    ordering = ['-comment_created']
+
+    def form_valid(self, form):
+        # form.instance.post_id = self.kwargs['pk']
+        form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
+        form.instance.users = self.request.user
+        
+        messages.success(self.request, 'Comment created Successfully!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('posts')
+
+
+class EditComment(UpdateView):
+    """Let users edit comments"""
+
+    model = Comment
+    # form_class = ProfileForm
+    fields = ['body']
+    pk_url_kwarg = 'pk'
+    template_name = 'socialnetwork/edit-comment.html'
+    success_url = 'posts'
+    # ordering = ['-post_date']
+
+    def form_valid(self, form):
+        # form.instance.post_id = self.kwargs['pk']
+        # form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
+        # form.instance.users = self.request.user
+        
+        messages.success(self.request, 'Comment updated Successfully!')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('posts')
