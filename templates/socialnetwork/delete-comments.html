@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Delete Comments
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="container-fluid posts-container">
+  <div class="row">
+    <div class="col-lg-2 profile-sidebar">
+      {% block sidebar %}
+    <nav>
+        {% include "socialnetwork/sidebar.html" %}
+    </nav>
+      {% endblock %}
+      
+    </div>
+
+    <!-- User Post Feed -->
+
+    <div class="col-lg-4 create-posts">
+      <h4>Delete Comments</h4>
+      <form method="POST" action="" class="" enctype=multipart/form-data>
+        {% csrf_token %}
+
+        <p>Are your you want to delete this post?</p>
+
+        <button type="submit" class="btn btn-danger">Delete Comment</button>
+        <a href="{% url 'posts' %}" class="btn btn-primary">Cancel</a>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
