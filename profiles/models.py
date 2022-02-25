@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.text import slugify
-# from cloudinary.models import CloudinaryField
+from cloudinary.models import CloudinaryField
 
 class UserProfile(models.Model):
     """User profile section"""
@@ -14,8 +14,8 @@ class UserProfile(models.Model):
     favourite_game = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True, null=True)
-    # user_picture = CloudinaryField(default='uploads/default-image.png')
-    user_picture = models.ImageField(default='uploads/default.png', upload_to='uploads/', blank=True)
+    user_picture = CloudinaryField('image', default='placeholder')
+    # user_picture = models.ImageField(default='uploads/default.png', upload_to='uploads/', blank=True)
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
     updated = models.DateTimeField(auto_now=True)
     profile_created = models.DateField(default=timezone.now)
