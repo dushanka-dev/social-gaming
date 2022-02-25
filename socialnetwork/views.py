@@ -156,3 +156,19 @@ class EditComment(UpdateView):
 
     def get_success_url(self):
         return reverse('posts')
+
+
+class DeleteComment(DeleteView):
+    """Delete user comments"""
+
+    model = Comment
+    pk_url_kwarg = 'pk'
+    template_name = 'socialnetwork/delete-comments.html'
+    success_url = 'posts'
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Comment deleted Successfully!')
+        return super(DeleteComment, self).delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('posts')

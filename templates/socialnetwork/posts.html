@@ -82,8 +82,8 @@
                   <p>Date: {{ comment.comment_created}}</p>
 
                   {% if comment.users == request.user %}
-                  <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-primary post-btn">Edit comment <i class="fa-solid fa-pen"></i></a>
-                  <!-- <a href="{% url 'delete-posts' post.pk %}" class="btn btn-danger post-btn">Delete Post <i class="fa-solid fa-trash"></i></a> -->
+                  <a href="{% url 'edit-comment' comment.pk %}" class="btn btn-primary post-btn">Edit Comment <i class="fa-solid fa-pen"></i></a>
+                  <a href="{% url 'delete-comment' comment.pk %}" class="btn btn-danger post-btn">Delete Comment <i class="fa-solid fa-trash"></i></a>
                   {% endif %}
 
                 </li>
