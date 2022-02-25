@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["socialgamingcommunity.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ['socialgamingcommunity.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
-    'socialnetwork',
     'profiles',
+    'socialnetwork',
 ]
 
 SITE_ID = 1
@@ -155,7 +155,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
