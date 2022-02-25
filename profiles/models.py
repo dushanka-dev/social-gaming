@@ -14,7 +14,7 @@ class UserProfile(models.Model):
     favourite_game = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True, null=True)
-    user_picture = CloudinaryField('image', default='placeholder')
+    user_picture = CloudinaryField('image', default='https://res.cloudinary.com/diaand2n5/image/upload/v1644080414/uploads/default-image_rw2t7w.png')
     # user_picture = models.ImageField(default='uploads/default.png', upload_to='uploads/', blank=True)
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
     updated = models.DateTimeField(auto_now=True)
