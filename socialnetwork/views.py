@@ -5,11 +5,9 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
-# from django.http import HttpResponse
 from django.contrib import messages
 from .models import Post, Comment
 from .forms import CreatePostForm, CommentsForm
-# from profiles.models import UserProfile
 
 
 def home(response):
@@ -39,7 +37,7 @@ class CreateComment(CreateView):
         form.instance.posts = get_object_or_404(Post, pk=self.kwargs['pk'])
         form.instance.users = self.request.user
         
-        messages.success(self.request, 'Your Profile Updated Successfully!')
+        messages.success(self.request, 'Comment created Successfully!')
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -112,12 +110,10 @@ class EditPosts(UpdateView):
     template_name = 'socialnetwork/edit-posts.html'
     success_url = 'my-posts'
     ordering = ['-post_date']
-    # ordering = ['-created_time']
-    # success_message = 'Your Profile Updated Successfully!'
 
-    # def get_object(self, queryset=None):
-    #     user_obj = get_object_or_404(Post, author=self.request.user)
-    #     return user_obj
+    def form_valid(self, form):
+        messages.success(self.request, 'Post edited Successfully!')
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('my-posts')
@@ -130,6 +126,10 @@ class DeletePost(DeleteView):
     pk_url_kwarg = 'pk'
     template_name = 'socialnetwork/delete-post.html'
     success_url = 'my-posts'
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Post deleted Successfully!')
+        return super(DeletePost, self).delete(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse('my-posts')
