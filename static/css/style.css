@@ -110,8 +110,16 @@ h2, h3, h4 {
     margin-top: 40px;
 }
 
-.sidebar-menu li a{
+.sidebar-menu li a {
     color: #E75900;
+}
+
+.sidebar-menu li a:hover {
+    color: #fff;
+}
+
+.sidebar-menu li a:active {
+    color: #ffffff;
 }
 
 .sidebar-menu li i{
@@ -119,8 +127,8 @@ h2, h3, h4 {
     margin-right: 10px;
 }
 
-.nav-pills .nav-link.active {
-    background: #cac9d1;
+.sidebar-menu li i:before {
+    color: #fff;
 }
 
 /* Landing Page */
