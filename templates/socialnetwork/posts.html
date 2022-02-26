@@ -38,7 +38,7 @@
             <h6>Created by:</h6>
               <a href="{% url 'usersprofile' post.author.pk %}" class="d-flex align-items-center text-white text-decoration-none"
                 aria-expanded="false">
-                <img src="{{user.userprofile.user_picture.url}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                <img src="{{user.userprofile.user_picture.url}}" alt="users-image" width="32" height="32" class="rounded-circle me-2">
                 <strong>{{ post.author }}</strong>
               </a>
               <p class="card-text post-time">{{ post.created_time }}</p>
