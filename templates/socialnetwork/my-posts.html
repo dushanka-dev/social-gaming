@@ -20,7 +20,7 @@
 {% endif %}
 
 <div class="container-fluid posts-container">
-  <div class="row">
+  <div class="row user-post-row">
     <div class="col-lg-2 profile-sidebar">
       {% block sidebar %}
     <nav>
@@ -65,9 +65,11 @@
       {% endfor %}
     </div>
 
-    <div class="col-lg-4 create-posts">
-      <h4>Add Post</h4>
-      <form method="POST" action="" class="" enctype=multipart/form-data>
+    <div class="col-xs-12 col-lg-4 create-posts">
+      <div class="row user-create-post">
+
+        <h4>Add Post</h4>
+      <form method="POST" action="" class="create-posts-form" enctype=multipart/form-data>
         {% csrf_token %}
 
         <!-- {{ form.media }} -->
@@ -75,6 +77,8 @@
 
         <button type="submit" class="btn btn-primary"> Update</button>
       </form>
+
+      </div>
 
     </div>
 

@@ -22,7 +22,7 @@ My Profile
 
 <div class="container-fluid" id="profile-container">
   <div class="row">
-    <div class="col-lg-3 profile-sidebar">
+    <div class="col-xs-12 col-lg-3 profile-sidebar">
       {% block sidebar %}
     <nav>
         {% include "socialnetwork/sidebar.html" %}
@@ -41,7 +41,7 @@ My Profile
           <div class="col-md-4">
             <img src="{{userprofile.user_picture.url}}" class="img-fluid rounded-start" alt="user-profile-image">
           </div>
-          <div class="col-md-8">
+          <div class="col-xs-12 col-md-8">
             <div class="card-body profile-card-content">
 
               <ul class="list-group list-group-flush">
@@ -55,7 +55,7 @@ My Profile
               </ul>
 
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary primary-btns" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <button type="button" class="btn btn-outline-primary primary-btns" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   Update Profile
               </button>
             </div>
@@ -70,7 +70,7 @@ My Profile
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <h5 class="modal-title" id="staticBackdropLabel">Update Profile</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
